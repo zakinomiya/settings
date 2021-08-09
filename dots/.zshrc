@@ -33,10 +33,10 @@ set -o vi
 bindkey "jj" vi-cmd-mode
 
 ####### Alias & Function #######
+alias vim="nvim"
 alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
-alias edc="vim $NVIM_CONFIG_HOME/dein.toml"
-alias edl="vim $NVIM_CONFIG_HOME/dein_lazy.toml"
+
 alias pj="cd ~/repo"
 ggs () { /opt/google/chrome/google-chrome "https://google.co.jp/search?q=$1" & ; }
 godir () { cd "$GOPATH/src/$1" ; }
@@ -45,5 +45,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-test $XDG_CONFIG_HOME/tempalias.sh && tmpalias
+[ -s "$XDG_CONFIG_HOME/tmpalias.sh" ] && tmpalias
 export PATH="$PATH:/home/zaki/.local/share/coursier/bin"
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export PATH="$PATH:/Users/zaki/Library/Application Support/Coursier/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/zaki/.sdkman"
+[[ -s "/Users/zaki/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zaki/.sdkman/bin/sdkman-init.sh"
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

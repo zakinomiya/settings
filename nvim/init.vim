@@ -112,8 +112,3 @@ autocmd FileType proto ClangFormatAutoEnable
 
 filetype plugin indent on
 
-"----------------------------------------------
-" Language: Clang
-"----------------------------------------------
-autocmd FileType c ClangFormatAutoEnable
-
