@@ -29,6 +29,7 @@ inoremap <silent> jj <ESC>
 nnoremap <C-t> :tabnew<cr> 
 nnoremap <C-L> :tabnext<cr>
 nnoremap <C-J> :tabprevious<cr> 
+nnoremap <Leader>d :Dash<cr>
 
 " in normal mode paste on Ctrl+v from the system clipboard
 nnoremap <silent> <C-p> "+p
@@ -44,14 +45,6 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 noremap <C-t> <C-O>
-
-nnoremap <silent> <Leader>e :NERDTree <cr> 
-nnoremap <silent> <Leader><Leader> :NERDTreeClose <cr> 
-nnoremap <silent> <Leader>d :LspDefinition <cr> 
-nnoremap <silent> <Leader>i :LspImplementation <cr> 
-nnoremap <silent> <Leader>h :LspHover <cr> 
-
-nnoremap <silent> <Leader>cd :cd %:p:h <cr> 
 
 filetype plugin indent on
 

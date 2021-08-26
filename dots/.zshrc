@@ -38,8 +38,7 @@ alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
 
 alias pj="cd ~/repo"
-ggs () { /opt/google/chrome/google-chrome "https://google.co.jp/search?q=$1" & ; }
-godir () { cd "$GOPATH/src/$1" ; }
+chrome () { /opt/google/chrome/google-chrome "$PWD/$1" & ; }
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

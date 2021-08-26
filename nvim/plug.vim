@@ -11,5 +11,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'overcache/NeoSolarized'
+  Plug 'rizzatti/dash.vim'
 
 call plug#end()
