@@ -7,6 +7,7 @@ require'nvim-treesitter.configs'.setup {
     "bash",
     "tsx",
     "vue",
+    "julia",
     "rust"
   },
   highlight = {

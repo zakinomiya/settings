@@ -38,11 +38,6 @@ alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
 
 alias pj="cd ~/repo"
-chrome () { /opt/google/chrome/google-chrome "$PWD/$1" & ; }
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -s "$XDG_CONFIG_HOME/tmpalias.sh" ] && tmpalias
 export PATH="$PATH:/home/zaki/.local/share/coursier/bin"
@@ -54,3 +49,7 @@ export SDKMAN_DIR="/Users/zaki/.sdkman"
 [[ -s "/Users/zaki/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zaki/.sdkman/bin/sdkman-init.sh"
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+

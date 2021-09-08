@@ -38,10 +38,12 @@ end
 local ftmap = {
   tsserver= { "typescript", "typescriptreact", "typescript.tsx" },
   metals= { "scala" },
-  rls= { "rust" }
+  julials= { "julia" },
+  rls= { "rust" },
+  gopls= { "go" }
 }
 
-local servers = { "metals", "tsserver", "rls" }
+local servers = { "metals", "tsserver", "rls", "gopls", "julials" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,

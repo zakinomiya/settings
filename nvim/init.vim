@@ -47,6 +47,7 @@ noremap <Right> <NOP>
 noremap <C-t> <C-O>
 
 filetype plugin indent on
+au BufRead,BufNewFile *.jl set filetype=julia
 
 runtime ./plug.vim
 
@@ -102,6 +103,4 @@ let g:rustfmt_autosave = 1
 " Language: ProtoBuf
 "----------------------------------------------
 autocmd FileType proto ClangFormatAutoEnable
-
-filetype plugin indent on
 
