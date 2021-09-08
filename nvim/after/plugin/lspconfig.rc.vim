@@ -43,7 +43,14 @@ local ftmap = {
   gopls= { "go" }
 }
 
-local servers = { "metals", "tsserver", "rls", "gopls", "julials" }
+local servers = { 
+  "metals"
+  , "tsserver"
+  , "rls"
+  , "gopls"
+  -- install 'LanguageServer' and 'SymbolServer' beforehand
+  , "julials"
+}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
