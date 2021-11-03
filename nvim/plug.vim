@@ -1,6 +1,5 @@
 call plug#begin(stdpath('data') . '/plugged')
 
-  Plug 'hoob3rt/lualine.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
@@ -13,5 +12,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'overcache/NeoSolarized'
   Plug 'rizzatti/dash.vim'
   Plug 'JuliaEditorSupport/julia-vim'
+  Plug 'nvim-lualine/lualine.nvim'
 
 call plug#end()
