@@ -40,7 +40,8 @@ local ftmap = {
   metals= { "scala" },
   julials= { "julia" },
   rls= { "rust" },
-  gopls= { "go" }
+  gopls= { "go" },
+  pyright= { "python" }
 }
 
 local servers = { 
@@ -50,7 +51,9 @@ local servers = {
   , "gopls"
   -- install 'LanguageServer' and 'SymbolServer' beforehand
   , "julials"
+  , "pyright"
 }
+
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
