@@ -36,8 +36,10 @@ bindkey "jj" vi-cmd-mode
 alias vim="nvim"
 alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
-
-alias pj="cd ~/repo"
+alias ezsh="vim ${HOME}/.zshrc"
+alias confd="cd $XDG_CONFIG_HOME"
+alias pj="cd ${HOME}/repo"
+alias godir="cd ${GOPATH}"
 
 [ -s "$XDG_CONFIG_HOME/tmpalias.sh" ] && tmpalias
 export PATH="$PATH:/home/zaki/.local/share/coursier/bin"
