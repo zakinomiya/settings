@@ -1,0 +1,32 @@
+snippet ifm "if __name__ == __main__"
+def main():
+	print("main")
+
+
+if __name__ == "__main__":
+	main()
+endsnippet
+
+snippet sut "simple unit testing"
+testcases = [
+	{
+		"in": 0, 
+		"expected": 0,
+	},
+]
+
+
+def main(i):
+	pass
+
+
+if __name__ == "__main__":
+	f = False
+	for t in testcases:
+		r = main(t["in"])
+		if (r != t["expected"]):
+			print(f"test failed. expected {t['expected']}, but actual {r}")
+			f = True
+
+	print("All the test cases passed!" if not f else "test failed.")
+endsnippet

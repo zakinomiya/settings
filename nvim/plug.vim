@@ -13,5 +13,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rizzatti/dash.vim'
   Plug 'JuliaEditorSupport/julia-vim'
   Plug 'nvim-lualine/lualine.nvim'
+  Plug 'sirver/ultisnips'
 
 call plug#end()

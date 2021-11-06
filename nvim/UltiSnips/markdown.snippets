@@ -1,0 +1,78 @@
+#code block
+snippet cdb "code block"
+
+```go
+// some code here
+```
+
+endsnippet
+
+# headers
+snippet h1 "header 1" b
+# ${1}
+endsnippet
+snippet h2 "header 2" b
+## ${1}
+endsnippet
+snippet h3 "header 3" b
+### ${1}
+endsnippet
+
+#summary
+snippet sm "summary and detail" b
+
+<details><summary>${1}</summary><div>
+</div></details>
+
+endsnippet
+
+#note
+snippet nti "note info" b
+:::note 
+${1}
+:::
+endsnippet
+snippet ntw "note warn" b
+:::note warn
+${1}
+:::
+endsnippet
+snippet nta "note alert" b
+:::note alert
+${1}
+:::
+endsnippet
+
+# lists
+snippet dtl "dots list"
+
+- List1
+- List2
+ - Sublist
+
+endsnippet
+
+snippet ntl "numbers list"
+
+1. List1
+1. List2
+ 1. Sublist
+
+endsnippet
+
+snippet chb "checkbox"
+
+- [ ] ToDo1
+- [x] Done1
+
+endsnippet
+
+# links
+
+snippet lnk "link" b
+
+[${1}](${2})
+
+endsnippet
+
+

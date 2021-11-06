@@ -51,6 +51,12 @@ au BufRead,BufNewFile *.jl set filetype=julia
 
 runtime ./plug.vim
 
+let g:UltiSnipsExpandTrigger='<c-j>' 
+let g:UltiSnipsJumpForwardTrigger='<c-f>' 
+let g:UltiSnipsJumpBackwardTrigger='<c-b>' 
+let g:UltiSnipsEditSplit='vertical'
+let g:completion_enable_snippet = 'UltiSnips'
+
 "----------------------------------------------
 " Colors
 "----------------------------------------------
