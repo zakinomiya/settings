@@ -36,6 +36,7 @@ bindkey "jj" vi-cmd-mode
 alias vim="nvim"
 alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
+alias eplug="vim $NVIM_CONFIG_HOME/plug.vim"
 alias ezsh="vim ${HOME}/.zshrc"
 alias confd="cd $XDG_CONFIG_HOME"
 alias pj="cd ${HOME}/repo"
@@ -55,3 +56,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
+
+alias luamake=/tmp/lua-language-server/3rd/luamake/luamake
