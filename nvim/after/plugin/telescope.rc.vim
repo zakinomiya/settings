@@ -14,7 +14,7 @@ require('telescope').setup{
         ["q"] = actions.close
       },
     },
-    wimblend = 0
+    wimblend = 0,
   }
 }
 EOF

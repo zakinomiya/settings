@@ -1,5 +1,11 @@
 lua << EOF
 local nvim_lsp = require('lspconfig')
+local handlers = vim.lsp.handlers
+
+-- Hover doc popup
+local pop_opts = { border = "rounded", max_width = 80 }
+handlers["textDocument/hover"] = vim.lsp.with(handlers.hover, pop_opts)
+handlers["textDocument/signatureHelp"] = vim.lsp.with(handlers.signature_help, pop_opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -16,9 +22,10 @@ local on_attach = function(client, bufnr)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gk', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<C-K>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -28,9 +35,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap('n', '<Leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-
-  require'completion'.on_attach(client, bufnr)
+  buf_set_keymap("n", "<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
 end
 
@@ -45,29 +50,29 @@ local function lsp(name, filetypes, cmd, settings)
 end
 
 local lsps = {
-  lsp("metals", {"scala"}, nil)
-  , lsp("tsserver", {"typescript", "typescriptreact", "typescript.tsx" }, nil)
-  , lsp("rls", {"rust"}, nil)
-  , lsp("gopls", {"go"}, nil)
-  , lsp("julials", {"julia"}, nil)
-  , lsp("pyright", {"python"}, nil)
+  lsp("metals", {"scala"})
+  , lsp("tsserver", {"typescript", "typescriptreact", "typescript.tsx" })
+  , lsp("rls", {"rust"})
+  , lsp("gopls", {"go"}, nil, { gopls = { usePlaceholders = true}})
+  , lsp("julials", {"julia"})
+  , lsp("pyright", {"python"})
   , lsp("zeta_note", {"markdown"}, { lspdir .. "/markdown/zeta-note-macos" })
   , lsp("sumneko_lua", {"lua"}, {lspdir .. "/lua-language-server/bin/macOS/lua-language-server", lspdir .. "/lua-language-server/bin/macOS/main.lua"})
 }
 
+-- enable nvim-comp 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 for _, l in ipairs(lsps) do
   nvim_lsp[l["name"]].setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     filetypes = l["filetypes"],
     flags = {
       debounce_text_changes = 150,
     },
     cmd = l["cmd"],
+    settings = l["settings"],
   }
-end
-
-if vim.b.completion_enable ~= 1 then
-  require'completion'.on_attach(client, bufnr)
 end
 EOF
 

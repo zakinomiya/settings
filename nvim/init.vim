@@ -25,17 +25,15 @@ syntax enable
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
 inoremap <silent> jj <ESC>
+inoremap <silent> っj <ESC>
 
-nnoremap <C-t> :tabnew<cr> 
-nnoremap <C-L> :tabnext<cr>
-nnoremap <C-J> :tabprevious<cr> 
-nnoremap <Leader>d :Dash<cr>
+" tab manipulation
+nnoremap <C-n> :tabnew %<cr> 
+nnoremap <C-h> :tabnext<cr>
+nnoremap <C-l> :tabprevious<cr> 
 
 " in normal mode paste on Ctrl+v from the system clipboard
 nnoremap <silent> <C-p> "+p
-" in visual mode copy on Ctrl+c from the system clipboard 
-vnoremap <silent> <C-y> "+y
-
 nnoremap <silent> <Leader>n :noh <cr>
 
 " Disable arrow keys
@@ -52,7 +50,7 @@ au BufRead,BufNewFile *.jl set filetype=julia
 runtime ./plug.vim
 
 let g:UltiSnipsExpandTrigger='<c-j>' 
-let g:UltiSnipsJumpForwardTrigger='<c-f>' 
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-b>' 
 let g:UltiSnipsEditSplit='vertical'
 let g:completion_enable_snippet = 'UltiSnips'
@@ -68,17 +66,13 @@ endif
 set termguicolors
 set background=dark
 
-" Material colorscheme settings
-let g:material_theme_style = 'darker-community'
+let g:airline_theme = 'codedark'
+colorscheme codedark
+highlight PMenu NONE
+
 
 " One colorscheme settings
 let g:one_allow_italics = 1
-
-let g:neosolarized_termtrans=1
-colorscheme NeoSolarized
-
-" Toggle background with <leader>bg
-map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
 
 "----------------------------------------------
 " Language: Go

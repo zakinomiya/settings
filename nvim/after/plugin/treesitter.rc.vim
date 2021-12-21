@@ -1,14 +1,15 @@
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {
-    "scala",
-    "javascript",
-    "go",
-    "bash",
-    "tsx",
-    "vue",
-    "julia",
-    "rust"
+    "scala"
+    ,"javascript"
+    ,"go"
+    ,"bash"
+    ,"tsx"
+    ,"vue"
+    ,"julia"
+    ,"rust"
+    ,"lua"
   },
   highlight = {
     enable = true,
