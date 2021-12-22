@@ -40,18 +40,27 @@ local on_attach = function(client, bufnr)
 end
 
 local lspdir = os.getenv("HOME") .. "/.config/lsp"
-local function lsp(name, filetypes, cmd, settings)
+local function lsp(name, filetypes, cmd, settings, additional_settings)
   return {
-    name = name,
-    filetypes = filetypes,
-    cmd = cmd,
-    settings = settings
+    name = name
+    ,filetypes = filetypes
+    ,cmd = cmd
+    ,settings = settings
+    ,additional_settings = additional_settings
   }
 end
 
 local lsps = {
   lsp("metals", {"scala"})
-  , lsp("tsserver", {"typescript", "typescriptreact", "typescript.tsx" })
+  , lsp("denols", nil, nil, nil, nil
+    -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#:~:text=To%20approrpiately%20highlight%20codefences%20returned%20from%20denols%2C%20you%20will%20need%20to%20augment%20vim.g.markdown_fenced%20languages%20in%20your%20init.lua.%20Example%3A
+   -- function() 
+   --   vim.g.markdown_fenced_languages = {
+   --     "ts=typescript"
+   --   }
+   -- end
+  )
+--  , lsp("tsserver", {"typescript", "typescriptreact", "typescript.tsx" })
   , lsp("rls", {"rust"})
   , lsp("gopls", {"go"}, nil, { gopls = { usePlaceholders = true}})
   , lsp("julials", {"julia"})
@@ -73,6 +82,10 @@ for _, l in ipairs(lsps) do
     cmd = l["cmd"],
     settings = l["settings"],
   }
+
+  if l["additional_settings"] ~= nil then
+    l["additional_settings"]()
+  end
 end
 EOF
 

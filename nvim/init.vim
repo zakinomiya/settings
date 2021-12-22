@@ -68,7 +68,7 @@ set background=dark
 
 let g:airline_theme = 'codedark'
 colorscheme codedark
-highlight PMenu NONE
+" highlight PMenu NONE
 
 
 " One colorscheme settings
