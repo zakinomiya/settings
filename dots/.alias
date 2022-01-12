@@ -1,0 +1,45 @@
+# !/bin/zsh
+
+alias vim="nvim"
+alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
+alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
+alias eplug="vim $NVIM_CONFIG_HOME/plug.vim"
+alias ezsh="vim ${HOME}/.zshrc"
+alias confd="cd $XDG_CONFIG_HOME"
+alias godir="cd ${GOPATH}"
+alias lg="lazygit"
+
+####### Docker #######
+alias dcl="docker container ls"
+alias dil="docker image ls"
+
+####### Functions #######
+fuction pj() {
+  cd ${HOME}/repo/$1
+}
+
+function notes() {
+  [ -z $NOTESDIR ] && echo "no NOTESDIR defined" && return 
+  [ ! -d $NOTESDIR ] && echo "$NOTESDIR doesn't exist" && return
+  [ $1 = "ls" ] && ll $NOTESDIR && return 
+
+  local noteName=$1
+  local d=$(date "+%Y-%m-%d")
+  local dir="${NOTESDIR}"
+  local filename="index.md"
+
+  if [ ! -z $noteName ]; then
+    dir="${dir}"/"${noteName}"
+  else 
+    dir="${dir}"/"${d}"
+  fi
+
+  ## note template 
+  ## TODO: move this to vim template file
+  local noteTemp="--- \ntitle: \"${noteName}\" \nauthor: \"zakinomiya\" \nposted: \"${d}\" \nstatus: \"wip\" \ndescription: \"\" \n---"
+
+  [ ! -d $dir ] && mkdir $dir
+  [ ! -s $dir/$filename ] && echo "$noteTemp" >> $dir/$filename
+  vim $dir/$filename
+}
+

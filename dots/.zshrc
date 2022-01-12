@@ -26,6 +26,7 @@ export NVIM_CONFIG_HOME=$XDG_CONFIG_HOME/nvim
 export GOPATH=~/go
 export GOROOT=/usr/local/go
 export GOBIN="$GOPATH/bin"
+export NOTESDIR="$HOME/repo/zakinomiya_blog/content/blog"
 
 ####### Customization #######
 
@@ -33,15 +34,8 @@ set -o vi
 bindkey "jj" vi-cmd-mode
 
 ####### Alias & Function #######
-alias vim="nvim"
-alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
-alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
-alias eplug="vim $NVIM_CONFIG_HOME/plug.vim"
-alias ezsh="vim ${HOME}/.zshrc"
-alias confd="cd $XDG_CONFIG_HOME"
-alias pj="cd ${HOME}/repo"
-alias godir="cd ${GOPATH}"
 
+source $HOME/.alias
 [ -s "$XDG_CONFIG_HOME/tmpalias.sh" ] && tmpalias
 export PATH="$PATH:/home/zaki/.local/share/coursier/bin"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
