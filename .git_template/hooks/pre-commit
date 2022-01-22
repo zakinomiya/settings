@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+echo "run wip check"
+
+deno run --allow-read --allow-run $PWD/.git/hooks/wip-check.ts
+
