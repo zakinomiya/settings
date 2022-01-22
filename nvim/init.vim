@@ -24,7 +24,7 @@ syntax enable
 
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
-inoremap <silent> jj <ESC>
+inoremap <silent> jk <ESC>
 inoremap <silent> っj <ESC>
 
 " tab manipulation
@@ -66,6 +66,8 @@ endif
 set termguicolors
 set background=dark
 
+"let g:tokyonight_style = "night"
+"colorscheme tokyonight
 let g:airline_theme = 'codedark'
 colorscheme codedark
 " highlight PMenu NONE

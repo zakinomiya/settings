@@ -31,15 +31,16 @@ export NOTESDIR="$HOME/repo/zakinomiya_blog/content/blog"
 ####### Customization #######
 
 set -o vi
-bindkey "jj" vi-cmd-mode
+bindkey "jk" vi-cmd-mode
 
 ####### Alias & Function #######
 
 source $HOME/.alias
 [ -s "$XDG_CONFIG_HOME/tmpalias.sh" ] && tmpalias
-export PATH="$PATH:/home/zaki/.local/share/coursier/bin"
+export PATH="$PATH:$HOME/.local/share/coursier/bin"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH="$PATH:/Users/zaki/Library/Application Support/Coursier/bin"
+export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/zaki/.sdkman"

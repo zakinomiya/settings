@@ -1,6 +1,6 @@
 # !/bin/zsh
 
-alias vim="nvim"
+alias vim="lvim"
 alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
 alias eplug="vim $NVIM_CONFIG_HOME/plug.vim"

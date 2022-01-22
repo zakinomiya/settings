@@ -4,6 +4,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
+  Plug 'folke/tokyonight.nvim'
+  Plug 'ray-x/lsp_signature.nvim'
 
   " code analysis and highlighting
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
