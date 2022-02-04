@@ -1,0 +1,8 @@
+#compdef notes
+
+_notes() {
+  cmds=( ${(uf)"$(ls $NOTESDIR)"} )
+  _values 'subcmd' $cmds
+}
+
+compdef _notes notes

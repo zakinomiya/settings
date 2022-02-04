@@ -28,7 +28,10 @@ function notes() {
   local dir="${NOTESDIR}"
   local filename="index.md"
 
-  if [ ! -z $noteName ]; then
+  if [ $noteName = "-d" ]; then
+    vim ${dir}
+    return 
+  elif [ ! -z $noteName ]; then
     dir="${dir}"/"${noteName}"
   else 
     dir="${dir}"/"${d}"
