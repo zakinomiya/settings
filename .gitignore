@@ -1,4 +1,5 @@
 .netrwhist
 installer.sh
-
 .DS_Store
+
+lvim/plugin/packer_compiled.lua
