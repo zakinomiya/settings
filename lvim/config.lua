@@ -19,12 +19,13 @@ lvim.leader = ";"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<Leader>n"] = ":noh<cr>"
+lvim.keys.normal_mode["<Leader>gp"] = ":Glow<cr>"
 lvim.keys.normal_mode["gd"] = "<cmd>lua vim.lsp.buf.definition()<cr>"
 lvim.keys.normal_mode["gk"] = "<cmd>lua vim.lsp.buf.hover()<cr>"
 lvim.keys.normal_mode["gi"] = "<cmd>lua vim.lsp.buf.implementation()<cr>"
 lvim.keys.normal_mode["gr"] = "<cmd>lua vim.lsp.buf.references()<cr>"
 lvim.keys.normal_mode["gp"] = "<cmd>lua require'lvim.lsp.peek'.Peek('definition')<CR>"
-lvim.keys.normal_mode["<C-j>"] = "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>"
+lvim.keys.normal_mode["<C-j>"] = "<cmd>lua vim.diagnostic.goto_next()<cr>"
 lvim.keys.normal_mode["<space>f"] = "<cmd>lua vim.lsp.buf.formatting()<cr>"
 lvim.keys.normal_mode["<Leader>a"] = "<cmd>lua vim.lsp.buf.code_action()<cr>"
 vim.cmd([[
@@ -95,6 +96,11 @@ lvim.builtin.treesitter.ensure_installed = {
   "css",
   "rust",
   "java",
+  "markdown",
+  "go",
+  "html",
+  "vue",
+  "scala",
   "yaml",
 }
 
@@ -125,13 +131,13 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- end
 
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
-local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  {
-    command = "autopep8", filetypes = { "python" },
-    extra_args = { "--in-place" },
-  }
-}
+--local formatters = require "lvim.lsp.null-ls.formatters"
+--formatters.setup {
+--  {
+--    command = "autopep8", filetypes = { "python" },
+--    extra_args = { "--in-place" },
+--  }
+--}
 
 -- -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
@@ -148,12 +154,25 @@ formatters.setup {
 --     },
 -- }
 lvim.plugins = {
-    {
-      "scalameta/nvim-metals",
-      config = function()
-        require("user.metals").config()
-      end,
-    },
+  {
+    "scalameta/nvim-metals",
+    ft = {"scala", "sbt"},
+    -- config = function()
+    --   require("user.metals").config()
+    -- end,
+  },
+  {
+    "npxbr/glow.nvim",
+    ft = {"markdown"}
+    -- run = "yay -S glow"
+  },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function()
+      require "lsp_signature".setup()
+    end
+  },
   { "Mofiqul/vscode.nvim" }
 }
 
@@ -161,6 +180,8 @@ lvim.autocommands.custom_groups = {
   { "FileType", "scala,sbt", "lua require('user.metals').config()" }
 }
 lvim.builtin.terminal.execs = { { "tig", "<Leader>gg", "Tig", "float" } }
+lvim.builtin.gitsigns.opts.current_line_blame = true
+lvim.builtin.nvimtree.setup.view.width = 100
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },

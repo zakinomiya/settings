@@ -10,6 +10,7 @@ handlers["textDocument/signatureHelp"] = vim.lsp.with(handlers.signature_help, p
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  require "lsp_signature".setup({})
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -54,10 +55,7 @@ end
 
 local lsps = {
   lsp("metals", {"scala"})
-  , lsp("denols", {"typescript"}, nil, nil, nil, 
-  function ()
-    vim.api.nvim_set_keymap('n', 'gd', ':DenolsDefinition<cr>', { noremap = true, silent = true }) 
-  end)
+  , lsp("denols", {"typescript"})
 --  , lsp("tsserver", {"typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" })
   , lsp("rust_analyzer", {"rust"}, nil, {
         ["rust-analyzer"] = {
@@ -99,6 +97,7 @@ local lsps = {
 
 -- enable nvim-comp 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 for _, l in ipairs(lsps) do
   nvim_lsp[l["name"]].setup {
     on_attach = on_attach,
@@ -118,9 +117,8 @@ for _, l in ipairs(lsps) do
 end
 EOF
 
-au filetype python nnoremap <space>f <cmd>call Autopep8()<CR>
-
 " autopep8
+au filetype python nnoremap <space>f <cmd>call Autopep8()<CR>
 function! Autopep8() range
   execute  "0,$!" 'autopep8' . ' -'
 endfunction

@@ -1,7 +1,8 @@
 local M = {}
 
 M.config = function()
-  local metals_config = require("metals").bare_config()
+  local metals = require("metals")
+  local metals_config = metals.bare_config()
   metals_config.on_attach = require("lvim.lsp").common_on_attach
   metals_config.settings = {
     showImplicitArguments = false,
@@ -9,7 +10,7 @@ M.config = function()
     excludedPackages = {},
   }
   metals_config.init_options.statusBarProvider = false
-  require("metals").initialize_or_attach { metals_config }
+  metals.initialize_or_attach { metals_config }
 end
 
 return M
