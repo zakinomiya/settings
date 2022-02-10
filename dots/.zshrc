@@ -73,3 +73,4 @@ unset __conda_setup
 
 fpath=( "$COMP_PATH" "${fpath[@]}" )
 autoload -Uz _notes
+autoload -Uz _pj 

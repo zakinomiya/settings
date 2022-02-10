@@ -1,0 +1,8 @@
+#compdef pj
+
+_pj() {
+  cmds=( ${(uf)"$(ls ~/repo)"} )
+  _values 'subcmd' $cmds
+}
+
+compdef _pj pj
