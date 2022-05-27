@@ -10,7 +10,7 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "vscode"
 vim.g.vscode_style = "dark"
 
@@ -28,6 +28,10 @@ lvim.keys.normal_mode["gp"] = "<cmd>lua require'lvim.lsp.peek'.Peek('definition'
 lvim.keys.normal_mode["<C-j>"] = "<cmd>lua vim.diagnostic.goto_next()<cr>"
 lvim.keys.normal_mode["<space>f"] = "<cmd>lua vim.lsp.buf.formatting()<cr>"
 lvim.keys.normal_mode["<Leader>a"] = "<cmd>lua vim.lsp.buf.code_action()<cr>"
+lvim.keys.insert_mode["<C-e>"] = "<cmd>lua require'luasnip'.jump(1)<cr>"
+lvim.keys.insert_mode["<C-w>"] = "<cmd>lua require'luasnip'.jump(-1)<cr>"
+lvim.keys.insert_mode["<C-n>"] = "<cmd>lua require'luasnip'.change_choice(1)<cr>"
+lvim.keys.insert_mode["<C-p>"] = "<cmd>lua require'luasnip'.change_choice(-1)<cr>"
 vim.cmd([[
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
@@ -37,8 +41,9 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
 noremap <C-t> <C-O>
+
+au BufNewFile,BufRead *.todo setf todo 
 ]])
 
 -- unmap a default keymapping
@@ -137,6 +142,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 --    command = "autopep8", filetypes = { "python" },
 --    extra_args = { "--in-place" },
 --  }
+
 --}
 
 -- -- set additional linters
@@ -162,26 +168,43 @@ lvim.plugins = {
     -- end,
   },
   {
-    "npxbr/glow.nvim",
-    ft = {"markdown"}
-    -- run = "yay -S glow"
-  },
-  {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function()
       require "lsp_signature".setup()
     end
   },
-  { "Mofiqul/vscode.nvim" }
+  { "Mofiqul/vscode.nvim" },
+  { "ollykel/v-vim", ft = {"vlang"} },
+  { "vim-denops/denops.vim" },
+  { "zakinomiya/nvim-dictionary" },
+  { "haishanh/night-owl.vim" },
+  { "sainnhe/edge" },
 }
 
 lvim.autocommands.custom_groups = {
-  { "FileType", "scala,sbt", "lua require('user.metals').config()" }
+  { "FileType", "scala,sbt", "lua require('user.metals').config()" },
 }
 lvim.builtin.terminal.execs = { { "tig", "<Leader>gg", "Tig", "float" } }
 lvim.builtin.gitsigns.opts.current_line_blame = true
 lvim.builtin.nvimtree.setup.view.width = 100
+
+require("luasnip.loaders.from_lua").load({ paths = { "~/.config/lvim/snippets/" } })
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.vlang = {
+  install_info = {
+    url = "https://github.com/zakinomiya/tree-sitter-v", -- local path or git repo
+    -- files = { "src/parser.c", "src/scanner.c" },
+    files = { "src/parser.c", "src/scanner.c" },
+    -- optional entries:
+    -- branch = "main", -- default branch in case of git repo if different from master
+    -- generate_requires_npm = true, -- if stand-alone parser without npm dependencies
+    -- requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = "vlang", -- if filetype does not match the parser name
+}
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },

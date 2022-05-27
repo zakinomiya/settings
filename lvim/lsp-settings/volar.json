@@ -1,0 +1,19 @@
+{
+  "volar": {
+    "format": {
+      "enable": false,
+      "defaultFormatter": {
+        "css": "eslint",
+        "html": "eslint",
+        "js": "eslint",
+        "less": "eslint",
+        "postcs": "eslint",
+        "pug": "eslint",
+        "sass": "eslint",
+        "scss": "eslint",
+        "stylus": "eslint",
+        "ts": "eslint"
+      }
+    }
+  }
+}
