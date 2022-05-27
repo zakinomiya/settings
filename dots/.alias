@@ -8,6 +8,11 @@ alias ezsh="vim ${HOME}/.zshrc"
 alias confd="cd $XDG_CONFIG_HOME"
 alias godir="cd ${GOPATH}"
 alias lg="lazygit"
+alias oda="open -a Docker"
+alias omysql="open -a MySQLWorkbench"
+alias t="todo.sh"
+alias tt="t ls @today"
+alias todo="vim $TODO_DIR/todo.todo"
 
 ####### Docker #######
 alias dcl="docker container ls"
@@ -25,7 +30,7 @@ function notes() {
 
   local noteName=$1
   local d=$(date "+%Y-%m-%d")
-  local dir="${NOTESDIR}"
+  local dir="${NOTESDIR}/blog"
   local filename="index.md"
 
   if [ $noteName = "-d" ]; then
