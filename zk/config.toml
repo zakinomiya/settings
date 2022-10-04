@@ -68,19 +68,20 @@ template = "default.md"
 # the group. This can be useful to quickly declare a group by the name of the
 # directory it applies to.
 
-[group.work]
-paths = ["work"]
-[group.work.note]
-filename = "{{slug title}}_{{date now '%Y-%m-%d'}}"
-
 [group.blog]
-paths = ["blog"]
+# paths = ["blog"]
 [group.blog.note]
 filename = "{{slug title}}_{{date now '%Y-%m-%d'}}"
-#[group."<NAME>".note]
-#filename = "{{date now}}"
-#[group."<NAME>".extra]
-#key = "value"
+
+[group.private]
+paths = ["private_notes"]
+[group.private.note]
+filename = "{{slug title}}_{{date now '%Y-%m-%d'}}"
+
+[group.work]
+paths = ["private_notes/work"]
+[group.work.note]
+filename = "{{slug title}}_{{date now '%Y-%m-%d'}}"
 
 # MARKDOWN SETTINGS
 [format.markdown]
@@ -173,6 +174,10 @@ dead-link = "error"
 [alias]
 # Here are a few aliases to get you started.
 ei = "zk edit --interactive"
+
+nb = "zk new blog -t $@"
+nw = "zk new work -t $@"
+np = "zk new private -t $@"
 
 # Shortcut to a command.
 #ls = "zk list $@"

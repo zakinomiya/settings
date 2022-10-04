@@ -2,12 +2,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 ####### Path configuration ####### 
 
 export XDG_CONFIG_HOME=$HOME/.config
 export NVIM_CONFIG_HOME=$XDG_CONFIG_HOME/nvim
 export GOPATH=~/go
-export GOROOT=/usr/local/go
+# export GOROOT=/usr/local/go
 export GOBIN="$GOPATH/bin"
 export NOTESDIR="$HOME/notes"
 export ZK_NOTEBOOK_DIR=$NOTESDIR
@@ -93,4 +98,12 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+
+# bun completions
+[ -s "/Users/zaki/.bun/_bun" ] && source "/Users/zaki/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
