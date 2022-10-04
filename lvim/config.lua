@@ -1,13 +1,3 @@
---[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
-a global executable or a path to
-an executable
-]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = false
@@ -32,6 +22,9 @@ lvim.keys.insert_mode["<C-e>"] = "<cmd>lua require'luasnip'.jump(1)<cr>"
 lvim.keys.insert_mode["<C-w>"] = "<cmd>lua require'luasnip'.jump(-1)<cr>"
 lvim.keys.insert_mode["<C-n>"] = "<cmd>lua require'luasnip'.change_choice(1)<cr>"
 lvim.keys.insert_mode["<C-p>"] = "<cmd>lua require'luasnip'.change_choice(-1)<cr>"
+-- place this in one of your configuration file(s)
+lvim.keys.normal_mode["f"] = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>"
+lvim.keys.normal_mode["t"] = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, hint_offset = -1 })<cr>"
 vim.cmd([[
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
@@ -44,6 +37,7 @@ noremap <Right> <NOP>
 noremap <C-t> <C-O>
 
 au BufNewFile,BufRead *.todo setf todo 
+au BufNewFile,BufRead *.gs setf javascript 
 ]])
 
 -- unmap a default keymapping
@@ -81,8 +75,6 @@ au BufNewFile,BufRead *.todo setf todo
 --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 -- }
 
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.dashboard.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
@@ -172,6 +164,14 @@ lvim.plugins = {
     event = "BufRead",
     config = function()
       require "lsp_signature".setup()
+    end
+  },
+  {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   },
   { "Mofiqul/vscode.nvim" },
