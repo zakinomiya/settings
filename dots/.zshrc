@@ -68,9 +68,9 @@ export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/zaki/.sdkman"
-[[ -s "/Users/zaki/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zaki/.sdkman/bin/sdkman-init.sh"
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="/Users/zaki/.sdkman"
+# [[ -s "/Users/zaki/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zaki/.sdkman/bin/sdkman-init.sh"
+# source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -94,3 +94,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/atsushimiyazaki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atsushimiyazaki/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/atsushimiyazaki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atsushimiyazaki/google-cloud-sdk/completion.zsh.inc'; fi
