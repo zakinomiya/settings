@@ -2,6 +2,7 @@
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "vscode"
+
 vim.g.vscode_style = "dark"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -16,11 +17,18 @@ lvim.keys.normal_mode["gi"] = "<cmd>lua vim.lsp.buf.implementation()<cr>"
 lvim.keys.normal_mode["gr"] = "<cmd>lua vim.lsp.buf.references()<cr>"
 lvim.keys.normal_mode["gp"] = "<cmd>lua require'lvim.lsp.peek'.Peek('definition')<CR>"
 lvim.keys.normal_mode["<C-j>"] = "<cmd>lua vim.diagnostic.goto_next()<cr>"
+lvim.keys.normal_mode["<C-h>"] = "<C-w>h"
+lvim.keys.normal_mode["<C-l>"] = "<C-w>l"
+lvim.keys.normal_mode["L"] = ":bn<cr>"
+lvim.keys.normal_mode["H"] = ":bp<cr>"
 lvim.keys.normal_mode["<space>f"] = "<cmd>lua vim.lsp.buf.formatting()<cr>"
 lvim.keys.normal_mode["<Leader>a"] = "<cmd>lua vim.lsp.buf.code_action()<cr>"
 lvim.keys.insert_mode["<C-e>"] = "<cmd>lua require'luasnip'.jump(1)<cr>"
 lvim.keys.insert_mode["<C-w>"] = "<cmd>lua require'luasnip'.jump(-1)<cr>"
 lvim.keys.insert_mode["<C-n>"] = "<cmd>lua require'luasnip'.change_choice(1)<cr>"
+lvim.keys.insert_mode["<C-p>"] = "<cmd>lua require'luasnip'.change_choice(-1)<cr>"
+lvim.keys.insert_mode["jk"] = "<ESC>"
+lvim.keys.insert_mode["っj"] = "<ESC>"
 lvim.keys.insert_mode["<C-p>"] = "<cmd>lua require'luasnip'.change_choice(-1)<cr>"
 -- place this in one of your configuration file(s)
 lvim.keys.normal_mode["f"] = "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR })<cr>"
@@ -34,6 +42,7 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
 noremap <C-t> <C-O>
 
 au BufNewFile,BufRead *.todo setf todo 
@@ -75,11 +84,11 @@ au BufNewFile,BufRead *.gs setf javascript
 --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 -- }
 
-lvim.builtin.dashboard.active = true
+lvim.builtin.alpha.active = true
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
+lvim.builtin.terminal.open_mapping = "<C-t>"
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -152,13 +161,13 @@ lvim.builtin.treesitter.highlight.enabled = true
 --     },
 -- }
 lvim.plugins = {
-  {
-    "scalameta/nvim-metals",
-    ft = {"scala", "sbt"},
-    -- config = function()
-    --   require("user.metals").config()
-    -- end,
-  },
+  -- {
+  --   "scalameta/nvim-metals",
+  --   ft = {"scala", "sbt"},
+  --   -- config = function()
+  --   --   require("user.metals").config()
+  --   -- end,
+  -- },
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
@@ -171,20 +180,20 @@ lvim.plugins = {
     branch = 'v2', -- optional but strongly recommended
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
-      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   },
   { "Mofiqul/vscode.nvim" },
-  { "ollykel/v-vim", ft = {"vlang"} },
+  { "ollykel/v-vim", ft = { "vlang" } },
   { "vim-denops/denops.vim" },
   { "zakinomiya/nvim-dictionary" },
   { "haishanh/night-owl.vim" },
   { "sainnhe/edge" },
 }
 
-lvim.autocommands.custom_groups = {
-  { "FileType", "scala,sbt", "lua require('user.metals').config()" },
-}
+-- lvim.autocommands.custom_groups = {
+--   { "FileType", "scala,sbt", "lua require('user.metals').config()" },
+-- }
 lvim.builtin.terminal.execs = { { "tig", "<Leader>gg", "Tig", "float" } }
 lvim.builtin.gitsigns.opts.current_line_blame = true
 lvim.builtin.nvimtree.setup.view.width = 100

@@ -117,9 +117,9 @@ function run() {
   fi
 
   install_zsh_template 
-  setup_vim
-  link_dotfiles
-  link_cmds
+  # setup_vim
+  # link_dotfiles
+  # link_cmds
 
   echo "Done setting links"
   echo "===============Stop Running=================="

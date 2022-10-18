@@ -66,13 +66,6 @@ endif
 set termguicolors
 set background=dark
 
-"let g:tokyonight_style = "night"
-"colorscheme tokyonight
-let g:airline_theme = 'codedark'
-colorscheme codedark
-" highlight PMenu NONE
-
-
 " One colorscheme settings
 let g:one_allow_italics = 1
 
