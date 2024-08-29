@@ -47,13 +47,13 @@ noremap <C-t> <C-O>
 filetype plugin indent on
 au BufRead,BufNewFile *.jl set filetype=julia
 
-runtime ./plug.vim
+" runtime ./plug.vim
 
-let g:UltiSnipsExpandTrigger='<c-j>' 
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-b>' 
-let g:UltiSnipsEditSplit='vertical'
-let g:completion_enable_snippet = 'UltiSnips'
+" let g:UltiSnipsExpandTrigger='<c-j>' 
+" let g:UltiSnipsJumpForwardTrigger='<c-j>'
+" let g:UltiSnipsJumpBackwardTrigger='<c-b>' 
+" let g:UltiSnipsEditSplit='vertical'
+" let g:completion_enable_snippet = 'UltiSnips'
 
 "----------------------------------------------
 " Colors
@@ -68,34 +68,4 @@ set background=dark
 
 " One colorscheme settings
 let g:one_allow_italics = 1
-
-"----------------------------------------------
-" Language: Go
-"----------------------------------------------
-let g:go_fmt_command = "goimports"
-let g:goimports = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_auto_type_info = 1
-let g:go_auto_sameids = 1
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
-au filetype go inoremap <buffer> . .<C-x><C-o>
-
-"----------------------------------------------
-" Language: Rust
-"----------------------------------------------
-let g:rustfmt_autosave = 1
-
-"----------------------------------------------
-" Language: ProtoBuf
-"----------------------------------------------
-autocmd FileType proto ClangFormatAutoEnable
 

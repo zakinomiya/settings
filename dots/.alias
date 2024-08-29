@@ -1,57 +1,11 @@
 # !/bin/zsh
 
-alias vim="lvim"
+alias vim="nvim"
 alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
-alias eiv="vim $NVIM_CONFIG_HOME/init.vim"
-alias eplug="vim $NVIM_CONFIG_HOME/plug.vim"
 alias ezsh="vim ${HOME}/.zshrc"
-alias confd="cd $XDG_CONFIG_HOME"
-alias godir="cd ${GOPATH}"
-alias lg="lazygit"
-alias oda="open -a Docker"
-alias omysql="open -a MySQLWorkbench"
-alias opostman="open -a Postman"
-alias t="todo.sh"
-alias tt="t ls @today"
-alias todo="vim $TODO_DIR/todo.todo"
-alias tls="tmux list-sessions"
-alias tks="tmux kill-session"
-alias tm="tmux"
+alias oda="open -a OrbStack"
+alias t="tb"
 
 ####### Docker #######
 alias dcl="docker container ls"
-alias dil="docker image ls"
-
-####### Functions #######
-fuction pj() {
-  cd ${HOME}/repo/$1
-}
-
-function notes() {
-  [ -z $NOTESDIR ] && echo "no NOTESDIR defined" && return 
-  [ ! -d $NOTESDIR ] && echo "$NOTESDIR doesn't exist" && return
-  [ $1 = "ls" ] && ll $NOTESDIR && return 
-
-  local noteName=$1
-  local d=$(date "+%Y-%m-%d")
-  local dir="${NOTESDIR}/blog"
-  local filename="index.md"
-
-  if [ $noteName = "-d" ]; then
-    vim ${dir}
-    return 
-  elif [ ! -z $noteName ]; then
-    dir="${dir}"/"${noteName}"
-  else 
-    dir="${dir}"/"${d}"
-  fi
-
-  ## note template 
-  ## TODO: move this to vim template file
-  local noteTemp="--- \ntitle: \"${noteName}\" \nauthor: \"zakinomiya\" \nposted: \"${d}\" \nstatus: \"wip\" \ndescription: \"\" \n---"
-
-  [ ! -d $dir ] && mkdir $dir
-  [ ! -s $dir/$filename ] && echo "$noteTemp" >> $dir/$filename
-  vim $dir/$filename
-}
 

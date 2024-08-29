@@ -15,6 +15,7 @@ end
 ls.add_snippets("zig", {
   s("deb", { t("std.debug.print(\""), i(1, "text"), t("\\n\", .{});") }),
   s("ist", { t("const std = @import(\"std\");") }),
+  s("aare", { t("var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);") })
 }, {
   key = "zig",
 })

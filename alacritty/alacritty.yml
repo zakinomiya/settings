@@ -1,7 +1,10 @@
 font:
   normal:
-    family: "JetBrainsMono Nerd Font"
-  size: 12
+    family: "JetBrainsMono Nerd Font Mono"
+  size: 13
+window:
+  opacity: 0.95
+  startup_mode: Fullscreen
 
 # Colors (Ayu Mirage)
 colors:
