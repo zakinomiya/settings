@@ -37,7 +37,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-
   {
     "williamboman/mason.nvim",
     opts = {
@@ -47,14 +46,44 @@ return {
       },
     },
   },
-  --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "rhysd/vim-go-impl",
+    lazy = true,
+    ft = "go",
+  },
+  {
+    "mfussenegger/nvim-dap",
+    lazy = true,
+    ft = "go",
+    config = function() end,
+  },
+  {
+    "leoluz/nvim-dap-go",
+    lazy = true,
+    ft = "go",
+    config = function()
+      require("dap-go").setup()
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    lazy = true,
+    ft = "go",
+    config = function()
+      require("dapui").setup()
+    end,
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    lazy = true,
+    ft = "go",
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+  },
+  { "nvim-neotest/nvim-nio" },
+  {
+    "vim-test/vim-test",
+    lazy = false,
+  },
 }

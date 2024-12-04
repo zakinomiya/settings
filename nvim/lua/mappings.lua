@@ -5,6 +5,7 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("i", "jk", "<ESC>")
+map("n", "<leader>qa", ":qa<CR>")
 map("n", "<leader>w", ":w<CR>")
 map("n", "<leader>v", "")
 map("n", "<leader>q", ":q<CR>")
@@ -21,6 +22,22 @@ map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle windo
 
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
+
+map("n", "<leader>tn", ":TestNearest<CR>", { desc = "test the nearest test" })
+
+map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", { desc = "toggle breakpoint" })
+map("n", "<leader>dba", ":lua require'dap'.clear_breakpoints()<CR>", { desc = "clear all breakpoints" })
+map(
+  "n",
+  "<leader>v",
+  ":lua require'dapui'.float_element('scopes', {width=500})<CR>:lua require'dapui'.float_element('scopes', {width=500})<CR>",
+  { desc = "show variables" }
+)
+
+-- map("n", "<CR>", ":@a<CR>", { desc = "repeat the last debug command" })
+map("n", "<leader>dd", ':lua require"dap".continue()<CR>', { desc = "show variables" })
+map("n", "<leader>dn", ':lua require"dap".run_last()<CR>', { desc = "new debugging session" })
+map("n", "<leader>d", ":let @a='lua require\"dap\".run_to_cursor()'<CR>:@a<CR>", { desc = "run to cursor" })
 
 map("n", "L", function()
   require("nvchad.tabufline").next()
