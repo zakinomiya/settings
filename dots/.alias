@@ -9,3 +9,8 @@ alias t="tb"
 ####### Docker #######
 alias dcl="docker container ls"
 
+
+
+## TODO: move these to tmpalias.sh
+## alias go="nocorrect go"
+## alias make="nocorrect make"
