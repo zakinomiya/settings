@@ -8,6 +8,7 @@ local servers = {
   "html",
   "cssls",
   "gopls",
+  "zls",
   -- "clangd",
   "rust_analyzer",
   "ts_ls",

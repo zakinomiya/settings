@@ -1,5 +1,8 @@
 require "nvchad.options"
 
+vim.g.nvim_tree_respect_buf_cwd = 1
+vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets"
+
 -- add yours here!
 vim.cmd [[
   autocmd BufRead * Copilot enable

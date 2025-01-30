@@ -1,0 +1,8 @@
+{
+  "uid": {
+      "prefix": "uid",
+      "body": [
+          "${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}${CURRENT_HOUR}${CURRENT_MINUTE}"
+      ]
+  }
+}

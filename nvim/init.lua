@@ -1,5 +1,7 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = ";"
+vim.g.nvim_tree_respect_buf_cwd = 1
+vim.opt.autochdir = true
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "rust",
