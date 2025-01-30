@@ -6,3 +6,4 @@
 - notes -> obsidian
 ~/.config
 - nvim -> ~/dev/settings/nvim
+- ghostty -> ~/dev/settings/ghostty
