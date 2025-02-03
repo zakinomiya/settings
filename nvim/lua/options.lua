@@ -4,9 +4,9 @@ vim.g.nvim_tree_respect_buf_cwd = 1
 vim.g.vscode_snippets_path = vim.fn.stdpath "config" .. "/snippets"
 
 -- add yours here!
-vim.cmd [[
-  autocmd BufRead * Copilot enable
-]]
+-- vim.cmd [[
+--   autocmd BufRead * Copilot enable
+-- ]]
 
 local dap, dapui = require "dap", require "dapui"
 dap.listeners.before.attach.dapui_config = function()

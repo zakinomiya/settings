@@ -1,6 +1,6 @@
 ~/
 - .alias -> ~/dev/settings/dots/.alias
-- .p10k.zsh -> ~/dev/settings/dots/alias/.p10k.zsh
+- .p10k.zsh -> ~/dev/settings/dots/.p10k.zsh
 - .tmux.conf -> ~/dev/settings/dots/.tmux.conf
 - .zshrc -> ~/dev/settings/dots/.zshrc
 - notes -> obsidian

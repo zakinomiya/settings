@@ -1,9 +1,7 @@
-zmodload zsh/zprof
+# zmodload zsh/zprof
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -36,7 +34,7 @@ setopt append_history
 setopt share_history
 setopt hist_ignore_all_dups
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
@@ -124,13 +122,6 @@ load-nvmrc() {
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd load-nvmrc
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/atsushimiyazaki/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/atsushimiyazaki/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/atsushimiyazaki/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/atsushimiyazaki/google-cloud-sdk/completion.zsh.inc'; fi
-eval "$(rbenv init - zsh)"
-
 # bun completions
 [ -s "/Users/atsushimiyazaki/.bun/_bun" ] && source "/Users/atsushimiyazaki/.bun/_bun"
 
@@ -138,4 +129,6 @@ eval "$(rbenv init - zsh)"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-zprof
+# zprof
+
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
