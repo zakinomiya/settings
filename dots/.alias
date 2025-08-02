@@ -5,6 +5,7 @@ alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias ezsh="vim ${HOME}/.zshrc"
 alias oda="open -a OrbStack"
 alias t="tb"
+alias c="cursor"
 
 ####### Docker #######
 alias dcl="docker container ls"
