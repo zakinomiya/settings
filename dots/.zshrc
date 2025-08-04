@@ -9,6 +9,7 @@ fi
 ####### Path configuration ####### 
 
 export XDG_CONFIG_HOME=$HOME/.config
+export ZDOTDIR=$HOME
 export NVIM_CONFIG_HOME=$XDG_CONFIG_HOME/nvim
 export GOPATH=~/go
 # export GOROOT=/usr/local/go
@@ -105,7 +106,7 @@ alias luamake=/tmp/lua-language-server/3rd/luamake/luamake
 # # <<< conda initialize <<<
 
 function load-nvm () {
-  export NVM_DIR="$HOME/.nvm"
+  export NVM_DIR="$HOME/.config/nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 }
@@ -132,3 +133,4 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # zprof
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

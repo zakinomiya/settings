@@ -1,2 +1,4 @@
 macos-option-as-alt=true
+font-feature = -dlig
+keybind = ¥=text:\\
 keybind = shift+enter=text:\n

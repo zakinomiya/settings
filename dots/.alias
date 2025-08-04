@@ -6,8 +6,10 @@ alias ezsh="vim ${HOME}/.zshrc"
 alias oda="open -a OrbStack"
 alias t="tb"
 alias c="cursor"
+alias dev="cd ~/dev"
 
 ####### Docker #######
+alias dc="docker container"
 alias dcl="docker container ls"
 
 
