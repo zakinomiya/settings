@@ -1,7 +1,6 @@
 macos-option-as-alt=true
 font-feature = -dlig
 font-family = "JetBrains Mono"
-font-family = "Hiragino Kaku Gothic ProN"
 keybind = ¥=text:\\
 keybind = shift+enter=text:\n
 scrollback-limit = 1073741824

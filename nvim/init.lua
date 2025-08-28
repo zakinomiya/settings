@@ -30,7 +30,7 @@ vim.pack.add({
 	{ src = "https://github.com/f-person/git-blame.nvim" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
 	{ src = "https://github.com/github/copilot.vim" },
-	{ src = "https://github.com/ggandor/leap.nvim" }
+	{ src = "https://github.com/ggandor/leap.nvim" },
 })
 require('leap').set_default_mappings()
 require("mini.icons").setup()
@@ -88,8 +88,14 @@ require("snacks").setup {
 }
 vim.keymap.set("n", "<leader>ff", ":lua Snacks.picker.files()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bf", ":lua Snacks.picker.buffers()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>df", ":lua Snacks.picker.diagnostics()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>gf", ":lua Snacks.picker.grep()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>kf", ":lua Snacks.picker.keymaps()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>rf", ":lua Snacks.picker.recent()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>cf", ":lua Snacks.picker.registers()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>z", ":lua Snacks.zen()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>of", function() Snacks.gitbrowse({ branch = "master" }) end, { silent = true })
+vim.keymap.set("v", "<leader>of", function() Snacks.gitbrowse({ branch = "master" }) end, { silent = true })
 vim.keymap.set("n", "<leader>t", function() Snacks.terminal.toggle('zsh', {}) end, { silent = true })
 
 require("claudecode").setup {
@@ -102,6 +108,7 @@ vim.lsp.enable({
 	"lua_ls",
 	"gopls",
 	"terraformls",
+	"ts_ls"
 })
 vim.lsp.inlay_hint.enable(true, { 0 })
 
