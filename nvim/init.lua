@@ -24,11 +24,20 @@ vim.keymap.set("t", "<C-j><C-k>", "<C-\\><C-n><C-w>h", { silent = true })
 vim.keymap.set("n", "<C-h>", ":tabprev<CR>", { silent = true })
 vim.keymap.set("n", "<C-l>", ":tabnext<CR>", { silent = true })
 
--- Dependencies
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/echasnovski/mini.nvim" },
+	{ src = "https://github.com/Mofiqul/vscode.nvim" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/folke/snacks.nvim" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/coder/claudecode.nvim" },
+	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/f-person/git-blame.nvim" },
+	{ src = "https://github.com/github/copilot.vim" },
+	{ src = "https://github.com/pwntester/octo.nvim" }
 })
 require("mini.icons").setup()
 require("mini.completion").setup()
@@ -45,19 +54,6 @@ require("mini.splitjoin").setup {
 		toggle = "<leader>ss"
 	}
 }
-
-vim.pack.add({
-	{ src = "https://github.com/Mofiqul/vscode.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/folke/snacks.nvim" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/coder/claudecode.nvim" },
-	{ src = "https://github.com/nvim-tree/nvim-tree.lua" },
-	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
-	{ src = "https://github.com/f-person/git-blame.nvim" },
-	{ src = "https://github.com/github/copilot.vim" },
-	{ src = "https://github.com/pwntester/octo.nvim" }
-})
 
 require("octo").setup {
 	picker = "fzf-lua",
