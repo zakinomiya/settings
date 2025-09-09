@@ -12,7 +12,6 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect' }
 
 vim.g.mapleader = ";"
-vim.g.maplocalleader = "_"
 
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("n", "<leader>w", ":write<CR>", { silent = true })
@@ -61,6 +60,7 @@ require("octo").setup {
 }
 vim.keymap.set("n", "<leader>o", "<cmd>Octo<CR>", { silent = true })
 
+
 require("nvim-tree").setup {
 	view = {
 		float = {
@@ -104,12 +104,13 @@ vim.keymap.set("n", "<leader>ft", "<cmd>FzfLua tabs<cr>", { silent = true })
 vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { silent = true })
 vim.keymap.set("n", "<leader>fl", "<cmd>FzfLua live_grep<cr>", { silent = true })
 vim.keymap.set("n", "<leader>fgv", "<cmd>FzfLua git_blame<cr>", { silent = true })
+vim.keymap.set("n", "<leader>fw", "<cmd>FzfLua grep_cword<cr>", { silent = true })
 vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>", { silent = true })
 vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", { silent = true })
 vim.keymap.set("n", "gt", "<cmd>FzfLua lsp_typedefs<cr>", { silent = true })
 vim.keymap.set("n", "gi", "<cmd>FzfLua lsp_implementations<cr>", { silent = true })
 vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<cr>", { silent = true })
-vim.keymap.set("n", "leader>df", "<cmd>FzfLua diagnostics_workspace<cr>", { silent = true })
+vim.keymap.set("n", "<leader>df", "<cmd>FzfLua diagnostics_workspace<cr>", { silent = true })
 vim.keymap.set("n", "<leader>lf", "<cmd>FzfLua lsp_finder<cr>", { silent = true })
 vim.keymap.set("n", "<leader>kf", "<cmd>FzfLua keymaps<cr>", { silent = true })
 
