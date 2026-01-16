@@ -19,9 +19,6 @@ vim.keymap.set("n", "<leader>q", ":quit<CR>", { silent = true })
 vim.keymap.set("n", "<leader>n", ":noh<CR>", { silent = true })
 vim.keymap.set("t", "<C-j><C-k>", "<C-\\><C-n><C-w>h", { silent = true })
 
--- navigation
-vim.keymap.set("n", "<C-h>", ":tabprev<CR>", { silent = true })
-vim.keymap.set("n", "<C-l>", ":tabnext<CR>", { silent = true })
 
 vim.pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -36,7 +33,9 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/f-person/git-blame.nvim" },
 	{ src = "https://github.com/github/copilot.vim" },
-	{ src = "https://github.com/pwntester/octo.nvim" }
+	{ src = "https://github.com/pwntester/octo.nvim" },
+	{ src = "https://github.com/vim-test/vim-test" },
+	{ src = "https://github.com/shortcuts/no-neck-pain.nvim" },
 })
 require("mini.icons").setup()
 require("mini.completion").setup()
@@ -54,12 +53,13 @@ require("mini.splitjoin").setup {
 	}
 }
 
+-- vim-test
+vim.keymap.set("n", "<leader>tn", ":TestNearest<CR>", { silent = true })
+
 require("octo").setup {
 	picker = "fzf-lua",
 	enable_builtin = true,
 }
-vim.keymap.set("n", "<leader>o", "<cmd>Octo<CR>", { silent = true })
-
 
 require("nvim-tree").setup {
 	view = {
@@ -96,15 +96,17 @@ require("snacks").setup {
 	scope = { enabled = true },
 	statuscolumn = { enabled = true },
 	terminal = { enabled = true },
-	zen = { enabled = true },
+	zen = { enabled = false },
 }
 vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<cr>", { silent = true })
 vim.keymap.set("n", "<leader>fr", "<cmd>FzfLua resume<cr>", { silent = true })
-vim.keymap.set("n", "<leader>ft", "<cmd>FzfLua tabs<cr>", { silent = true })
-vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { silent = true })
+vim.keymap.set("n", "<leader>ft", "<cmd>FzfLua buffers<cr>", { silent = true })
 vim.keymap.set("n", "<leader>fl", "<cmd>FzfLua live_grep<cr>", { silent = true })
-vim.keymap.set("n", "<leader>fgv", "<cmd>FzfLua git_blame<cr>", { silent = true })
 vim.keymap.set("n", "<leader>fw", "<cmd>FzfLua grep_cword<cr>", { silent = true })
+vim.keymap.set("n", "<leader>fh", "<cmd>FzfLua search_history<cr>", { silent = true })
+vim.keymap.set("n", "<leader>fo", "<cmd>FzfLua jumps<cr>", { silent = true })
+vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua registers<cr>", { silent = true })
+vim.keymap.set("n", "<leader>fgs", "<cmd>FzfLua git_status<cr>", { silent = true })
 vim.keymap.set("n", "gr", "<cmd>FzfLua lsp_references<cr>", { silent = true })
 vim.keymap.set("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", { silent = true })
 vim.keymap.set("n", "gt", "<cmd>FzfLua lsp_typedefs<cr>", { silent = true })
@@ -114,13 +116,13 @@ vim.keymap.set("n", "<leader>df", "<cmd>FzfLua diagnostics_workspace<cr>", { sil
 vim.keymap.set("n", "<leader>lf", "<cmd>FzfLua lsp_finder<cr>", { silent = true })
 vim.keymap.set("n", "<leader>kf", "<cmd>FzfLua keymaps<cr>", { silent = true })
 
-vim.keymap.set("n", "<leader>z", ":lua Snacks.zen()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>z", "<cmd>NoNeckPain<CR>", { silent = true })
 vim.keymap.set("n", "<leader>of", function() Snacks.gitbrowse({ branch = "master" }) end, { silent = true })
 vim.keymap.set("v", "<leader>of", function() Snacks.gitbrowse({ branch = "master" }) end, { silent = true })
-vim.keymap.set("n", "<leader>t", function() Snacks.terminal.toggle('zsh', {}) end, { silent = true })
+vim.keymap.set("n", "<leader><leader>t", function() Snacks.terminal.toggle('zsh', {}) end, { silent = true })
 
 require("claudecode").setup {
-	terminal_cmd = "~/.claude/local/claude"
+	terminal_cmd = "AWS_REGION=us-east-1 ~/.claude/local/claude"
 }
 vim.keymap.set("n", "<leader>ac", "<cmd>ClaudeCode<CR>")
 vim.keymap.set("v", "<leader>s", "<cmd>ClaudeCodeSend<CR>")
@@ -129,7 +131,11 @@ vim.lsp.enable({
 	"lua_ls",
 	"gopls",
 	"terraformls",
-	"ts_ls"
+	"ts_ls",
+	"expert",
+	"zls",
+	"ty",
+	"ruff"
 })
 vim.lsp.inlay_hint.enable(true, { 0 })
 
