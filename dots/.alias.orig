@@ -1,0 +1,22 @@
+# !/bin/zsh
+
+alias vim="nvim"
+alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
+alias ezsh="vim ${HOME}/.zshrc"
+alias oda="open -a Rancher\ Desktop"
+alias t="tb"
+<<<<<<< HEAD
+alias c="cursor"
+=======
+alias dev="cd ~/dev"
+>>>>>>> 067ba45 (update config)
+
+####### Docker #######
+alias dc="docker container"
+alias dcl="docker container ls"
+
+
+
+## TODO: move these to tmpalias.sh
+## alias go="nocorrect go"
+## alias make="nocorrect make"

@@ -134,3 +134,17 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+if [ -d "$HOME/.rbenv/shims" ]; then
+  export PATH="$HOME/.rbenv/shims:$PATH"
+fi
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/atsushi.miyazaki/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+#
+source $HOME/.zsh.local
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/atsushi.miyazaki/.antigravity/antigravity/bin:$PATH"

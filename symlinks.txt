@@ -9,3 +9,6 @@
 - ghostty -> ~/dev/settings/ghostty
 - alacritty -> ~/dev/settings/alacritty
 - gh-dash -> ~/dev/settings/gh-dash
+~/.claude
+- settings.json -> ~/dev/settings/claude/settings.json
+- statusline-command.sh -> ~/dev/settings/claude/statusline-command.sh

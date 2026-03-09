@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754018513697
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "sh /Users/atsushi.miyazaki/.claude/statusline-command.sh"
+  }
+}
