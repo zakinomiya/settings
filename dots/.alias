@@ -3,10 +3,57 @@
 alias vim="nvim"
 alias tmpalias="source $XDG_CONFIG_HOME/tmpalias.sh"
 alias ezsh="vim ${HOME}/.zshrc"
-alias oda="open -a OrbStack"
+alias oda="open -a Docker"
 alias t="tb"
 alias c="cursor"
+alias a="agent"
+alias odn="vim ~/dev/alpacahq/notes/daily-note.md"
 alias dev="cd ~/dev"
+alias nt="cd ~/dev/alpacahq/notes"
+
+note() {
+  emulate -L zsh
+  setopt errexit
+  (( $# )) || { print -u2 "usage: note <filename>"; return 1 }
+  local notedir="$HOME/dev/alpacahq/notes/misc"
+  local here
+  here=$(pwd -P)
+  local filename="${1}"
+  local base
+  base=$(basename -- "$filename")
+  local ts ntfilepath
+  mkdir -p "$notedir"
+  _note_append_backlink() {
+    local target="$1"
+    [[ -f "$target" ]] || return 0
+    printf '\n## Backlinks\n\n- %s\n' "$here/$filename" >> "$target"
+  }
+  if [[ ! -e "$filename" ]]; then
+    ts=$(date +%Y%m%d%H%M%S)
+    ntfilepath="$notedir/${ts}_${base}"
+    if [[ -e "$ntfilepath" ]]; then
+      print -u2 "error: $ntfilepath は既に存在するため、misc 内で名前が衝突しています"
+      return 1
+    fi
+    mkdir -p "$(dirname "$filename")"
+    touch "$ntfilepath"
+    ln -sf "$ntfilepath" "$filename"
+    _note_append_backlink "$ntfilepath"
+  elif [[ -L "$filename" ]]; then
+    :
+  else
+    ts=$(date +%Y%m%d%H%M%S)
+    ntfilepath="$notedir/${ts}_${base}"
+    if [[ -e "$ntfilepath" ]]; then
+      print -u2 "error: $ntfilepath は既に存在するため、misc 内で名前が衝突しています"
+      return 1
+    fi
+    mv "$filename" "$ntfilepath"
+    ln -sf "$ntfilepath" "$filename"
+    _note_append_backlink "$ntfilepath"
+  fi
+  nvim "$filename"
+}
 
 ####### Docker #######
 alias dc="docker container"
@@ -17,3 +64,15 @@ alias dcl="docker container ls"
 ## TODO: move these to tmpalias.sh
 ## alias go="nocorrect go"
 ## alias make="nocorrect make"
+vsplit2() {
+  local profile="Browser"
+  local file="${1}"
+  # Kill any process running on port 18000 (grip's default)
+  lsof -ti :6419 | xargs kill -9 2>/dev/null
+  # Open file with grip in background
+  grip "$file" 6419 &
+  osascript -e "tell application \"iTerm2\" to tell current session of current window to split vertically with profile \"$profile\""
+}
+alias preview="vsplit2"
+alias dn="vsplit2 ~/dev/alpacahq/notes/daily-note.md"
+alias da="vsplit2 ~/dev/alpacahq/notes/archive.md"

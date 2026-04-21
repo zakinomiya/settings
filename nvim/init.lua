@@ -23,6 +23,7 @@ vim.keymap.set("n", "<leader>w", ":write<CR>", { silent = true })
 vim.keymap.set("n", "<leader>q", ":quit<CR>", { silent = true })
 vim.keymap.set("n", "<leader>n", ":noh<CR>", { silent = true })
 vim.keymap.set("t", "<C-j><C-k>", "<C-\\><C-n><C-w>h", { silent = true })
+vim.keymap.set('i', '<C-d>', function() return os.date('%Y-%m-%d') end, { expr = true })
 
 vim.pack.add({
   { src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -40,7 +41,13 @@ vim.pack.add({
   { src = "https://github.com/pwntester/octo.nvim" },
   { src = "https://github.com/vim-test/vim-test" },
   { src = "https://github.com/shortcuts/no-neck-pain.nvim" },
+  { src = "https://github.com/mfussenegger/nvim-jdtls" },
+  { src = "https://github.com/SmiteshP/nvim-navic" },
+  { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
+
+vim.o.statusline = "%{%v:lua.require'nvim-navic'.get_location()%}"
+-- require("mini.statusline").setup()
 require("mini.icons").setup()
 require("mini.completion").setup()
 require("mini.comment").setup {
@@ -97,6 +104,7 @@ require("gitblame").setup {
 require("snacks").setup {
   indent = { enabled = true },
   explorer = { enabled = false },
+  gh = { enabled = true },
   picker = { enabled = false },
   notifier = { enabled = true },
   quickfile = { enabled = true },
@@ -134,6 +142,12 @@ require("claudecode").setup {
 vim.keymap.set("n", "<leader>ac", "<cmd>ClaudeCode<CR>")
 vim.keymap.set("v", "<leader>s", "<cmd>ClaudeCodeSend<CR>")
 
+local navic = require("nvim-navic")
+vim.lsp.config('gopls', {
+    on_attach = function(client, bufnr)
+        navic.attach(client, bufnr)
+    end
+})
 vim.lsp.enable({
   "lua_ls",
   "gopls",
@@ -144,6 +158,7 @@ vim.lsp.enable({
   "ty",
   "ruff",
   "rust_analyzer",
+  "jdtls",
 })
 vim.lsp.inlay_hint.enable(true, { 0 })
 
@@ -176,4 +191,43 @@ vim.api.nvim_create_autocmd("VimEnter", {
       end
     end
   end
+})
+
+-- ファイルを開いた時に、そのファイルの親ディレクトリに自動で cd する
+-- TODO: ルートディレクトリが変わって検索とかLSPがうまく動かなくなるので直す
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   pattern = "*",
+--   callback = function()
+--     -- 特殊なバッファ（nvim-tree や terminal など）を除外するための条件
+--     if vim.bo.buftype ~= "" or vim.fn.expand("%:p") == "" then
+--       return
+--     end
+--
+--     -- ファイルの絶対パスを取得し、そのディレクトリに移動
+--     local dir = vim.fn.expand("%:p:h")
+--     if vim.fn.isdirectory(dir) == 1 then
+--       vim.api.nvim_set_current_dir(dir)
+--     end
+--   end,
+-- })
+
+--- note関連
+local nu = require('noteutils');
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.keymap.set('v', 'ta', function()
+        nu.move_selection_to_file("~/dev/alpacahq/notes/archive.md")
+      end, { desc = '選択範囲を別ファイルに移動' })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.keymap.set('v', 'tn', function()
+        nu.export_to_misc_file("~/dev/alpacahq/notes/misc")
+      end, { desc = '選択範囲をmiscのファイルにエクスポート' })
+  end,
 })
