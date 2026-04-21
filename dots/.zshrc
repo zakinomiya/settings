@@ -3,9 +3,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 ####### Path configuration ####### 
 
 export XDG_CONFIG_HOME=$HOME/.config
@@ -23,7 +20,7 @@ fpath=( "$COMP_PATH" "${fpath[@]}" )
 
 ####### Completion configuration ####### 
 
-plugins=(docker)
+plugins=(docker kubectl kubectx)
 autoload -Uz _notes
 autoload -Uz _pj 
 autoload -Uz compinit && compinit
@@ -53,9 +50,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 ####### Customization #######
 
 set -o vi
@@ -73,18 +67,19 @@ bindkey '^N' history-beginning-search-forward
 
 source $HOME/.alias
 [ -s "$XDG_CONFIG_HOME/tmpalias.sh" ] && tmpalias
-export PATH="$PATH:$HOME/.local/share/coursier/bin"
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
+# export PATH="$PATH:$HOME/.local/share/coursier/bin"
+# export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+# export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$GOBIN"
+export PATH="$PATH:$HOME/.local/share/bob/nvim-bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="/Users/zaki/.sdkman"
 # [[ -s "/Users/zaki/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/zaki/.sdkman/bin/sdkman-init.sh"
 # source "$HOME/.sdkman/bin/sdkman-init.sh"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="$PATH:$HOME/flutter/bin"
+# export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+# export PATH="$PATH:$HOME/flutter/bin"
 
 
 
@@ -133,7 +128,7 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # zprof
 
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 if [ -d "$HOME/.rbenv/shims" ]; then
   export PATH="$HOME/.rbenv/shims:$PATH"
@@ -142,9 +137,12 @@ fi
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/atsushi.miyazaki/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-#
-source $HOME/.zsh.local
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
-# Added by Antigravity
-export PATH="/Users/atsushi.miyazaki/.antigravity/antigravity/bin:$PATH"
+source $HOME/.zsh.local
+# export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+
+eval "$(direnv hook zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/dev/settings/dots/.p10k.zsh.
+[[ ! -f ~/dev/settings/dots/.p10k.zsh ]] || source ~/dev/settings/dots/.p10k.zsh
