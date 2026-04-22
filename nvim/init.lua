@@ -159,6 +159,7 @@ vim.lsp.enable({
   "ruff",
   "rust_analyzer",
   "jdtls",
+  "sourcekit",
 })
 vim.lsp.inlay_hint.enable(true, { 0 })
 
